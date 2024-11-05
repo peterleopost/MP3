@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OnlineMP3player...The best online MP3 Player!</title>
+    <meta name="description" content="MP3sniffer upload and play your favorite MP3 tracks!">
+    <meta name="keywords" content="mp3, mp4, audioplayer, mp3player, winamp clone, winamp, shuffle mp3's, autoplay, volume adjust, mp3 equalizer, playlist, auto play, online player, online mp3 player, no downloads, free, no cost, free script, free mp3player, load computerfiles, mp3 files, wav, mp4, shuffle, autoplay, playlist, mp3 artists, mp3 files, mp3 songs">
+    <meta name="htdig-keywords" content="onlinemp3player...The best online MP3 Player!">
+    <meta name="robots" content="index, follow">
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+</html>
+
+<body>
+    <div class="title-container">
+        <h1 class="title">onlineMP3player.com</h1>
+        <font size=2 color=c0c0c0>Play your favorite MP3 or MP4 tracks and video's !<p></font>
+    </div>
+
+    <div class="mp3-player">
+        <div class="controls">
+            <label for="fileUpload" class="custom-file-upload">
+                Choose your MP3/MP4 files
+                <span class="subtext">from your computer!</span>
+            </label>
+            <input type="file" id="fileUpload" accept="audio/*" multiple onchange="handleFiles(this.files)">
+
+            <div class="volume-control">
+                <label for="volumeControl">Adjust Volume</label>
+                <input type="range" id="volumeControl" min="0" max="1" step="0.01" value="1" onchange="setVolume(this.value)">
+            </div>
+        </div>
+
+        <div class="playlist-controls">
+            <button onclick="toggleAutoplay()">Autoplay: Off</button>
+            <button onclick="toggleRandom()">Shuffle: Off</button>
+            <button onclick="clearPlaylist()">Clear Playlist</button>
+<button onclick="savePlaylist()">Save Playlist</button>
+<button onclick="loadPlaylist()">Load Playlist</button>
+
+        </div>
+
+        <div class="player-container">
+            <div class="playlist" id="playlist"></div>
+            <div class="visualizer-equalizer-container">
+                <canvas id="visualizer"></canvas>
+                <div class="equalizer">
+                    <label>Bass</label>
+                    <input type="range" id="bass" min="-40" max="40" step="1" value="0" onchange="changeEqualizer(this)">
+                    <label>Mid</label>
+                    <input type="range" id="mid" min="-40" max="40" step="1" value="0" onchange="changeEqualizer(this)">
+                    <label>Treble</label>
+                    <input type="range" id="treble" min="-40" max="40" step="1" value="0" onchange="changeEqualizer(this)">
+                </div>
+            </div>
+        </div>
+
+        <div id="currentTrack" class="current-track">No track playing</div>
+
+        <div class="spacer"></div>
+
+        <div class="player-controls">
+            <button onclick="prevTrack()">Previous Track</button>
+            <button onclick="togglePlayPause()">Play</button>
+            <button onclick="nextTrack()">Next Track</button>
+<button style="background-color: yellow; color: black; margin-left: 10px; padding: 4px 8px; font-size: 12px;" onclick="window.open('https://en.y2mate.is/', '_blank')">Convert YouTube to MP3/MP4</button>
+        </div>
+
+        <div class="track-position">
+            <input type="range" id="progressBar" min="0" max="100" value="0" step="1" onchange="seekTrack(this.value)">
+            <div class="time-display">
+                <span id="currentTime">0:00</span> / <span id="totalTime">0:00</span>
+            </div>
+        </div>
+    </div>
+<!-- Video Popup for MP4 files -->
+<div id="videoPopup" style="display: none;">
+    <video id="videoPlayer" controls></video>
+    <button onclick="closePopup()">Close</button>
+</div>
+
+    <!-- Histats.com START (async) -->
+    <script type="text/javascript">
+        var _Hasync = _Hasync || [];
+        _Hasync.push(['Histats.start', '1,4877080,4,0,0,0,00010000']);
+        _Hasync.push(['Histats.fasi', '1']);
+        _Hasync.push(['Histats.track_hits', '']);
+        (function() {
+            var hs = document.createElement('script');
+            hs.type = 'text/javascript';
+            hs.async = true;
+            hs.src = ('//s10.histats.com/js15_as.js');
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(hs);
+        })();
+    </script>
+    <noscript>
+        <a href="/" target="_blank">
+            <img src="//sstatic1.histats.com/0.gif?4877080&101" alt="" border="0">
+        </a>
+    </noscript>
+    <!-- Histats.com END -->
+
+    <script src="script.js"></script>
+</body>
+</html>
+
